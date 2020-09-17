@@ -1,0 +1,25 @@
+{
+    "files.associations": {
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "cwchar": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "fstream": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "list": "cpp"
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
+}
