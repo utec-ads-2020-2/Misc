@@ -1,27 +1,14 @@
+#include<stdio.h>
 #include <iostream>
-#include "debugger/debugger.h"
+#include<math.h>
 
 using namespace std;
 
-void test(int*, int);
-
-int main(int argc, char const *argv[]) {
-      int arr[5] = {1 , 2 , 3 , 4 , 5};
-      int size = sizeof(arr) / sizeof(arr[0]);
-
-      test(arr, size);
-    
-   	return EXIT_SUCCESS;
-}
-
-void test(int* ptr, int size) {
-    int* temp = ptr;
-
-    Debugger<int> debugger(ptr, size);
-    debugger.out(*ptr, ptr);
-    debugger.out(*ptr++, ptr);
-    debugger.out(*++ptr, ptr);
-    debugger.out(++*ptr, ptr);
-    debugger.out((*ptr)++, ptr);
-    debugger.out(*ptr, ptr);
+int main() {
+    double n, p, k;
+    while(cin>> n >> p) {
+        k = exp(log(p)/n);
+        cout << k << endl;
+    }
+    return 0;
 }
