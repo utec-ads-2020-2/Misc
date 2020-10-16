@@ -9,26 +9,31 @@ class Equation {
     public:
         virtual void print() = 0;
         virtual double execute() = 0;
-}
+};
 
 class Operador: public Equation {
     protected: 
         Equation* left;
         Equation* right;
-}
+};
 
 class Plus : public Operador {
+    
     public:
+        void print() {
+            cout << "+" << endl;
+        }
+
         double execute() {
             auto resultLeft = left->execute();
             // Get answer of right
             // Return the result of both operations
         }
-}
+};
 
 class Operando: public Equation {
     protected:
-        double value;
+        string value;
 
     public:
         void print() {
@@ -39,19 +44,32 @@ class Operando: public Equation {
             // Transformar equation a double
             // Retornado transformada
         }
-}
+};
 
 class Plus : public Equation {
     public:
         void print() {
 
         }
-}
+};
+
+struct EquationFabric {
+   static Equation* parse(string equation) {
+        Plus* root;  // transform from postfix
+        return root;
+    }
+};
+
+Equation* parseFromString(string eq);
 
 int main(int argc, char *argv[]) {
     cout << "===========================================================" << endl;
     cout << "Expression Trees" << endl;
     cout << "===========================================================" << endl << endl;
+
+    auto test1 = Tester::initWithSequenceNumber("", 2);
+
+    auto equation = Equation::init("3x((7+1)/4)+(17- 5)");
 
     Equation* eq1 = Equation::processEquation("3 x ((7 + 1) / 4) + (17 - 5)");
     auto result = eq1->execute();
@@ -69,10 +87,10 @@ int main(int argc, char *argv[]) {
     result = eq2->execute(variables);
     cout << result;
 
-    // Disjoint sets
+    Equation* eq = parseFromString("1 + - 9 x (2 - 3 / b)");
 
-    DisjointSet numbers;
-    numbers.makeSet('x');
-
+    auto eq1 = EquationFabric::parse("1 + - 9 x (2 - 3 / b)");
+    eq1->execute();
+    
     return EXIT_SUCCESS;
 }
