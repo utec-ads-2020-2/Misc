@@ -1,14 +1,29 @@
 #include <iostream>
+#include <list>
+#include <unordered_map>
 
 using namespace std;
 
 class Equation {
     protected:
         string equation;
+        unordered_map<string, double> variables;
 
     public:
         virtual void print() = 0;
         virtual double execute() = 0;
+        virtual double execute(unordered_map<string, double> &variables) = 0;
+
+        static Equation* processEquation(string equation) {
+            for (int i = 0; i < equation.length(); ++i) {
+                // infix to posfix
+            }
+
+            // expression tree 
+            Equation* root = new Plus(left, right);
+            
+            return root;
+        }
 };
 
 class Operador: public Equation {
@@ -75,10 +90,13 @@ int main(int argc, char *argv[]) {
     auto result = eq1->execute();
     cout << result;
 
-    Equation* eq2 = Equation::processEquation("1 + - 9 x (2 - 3 / b)");
+    Equation* eq2 = Equation::processEquation("1 + - 9 x (2 - 3 / aa) + aa");
 
     map<string, double> variables;
     variables["b"] = 5;
+    variables["a"] = 5;
+
+    eq2["a"] = 4;
 
     auto result = eq2->execute(variables);
     cout << result;
@@ -91,6 +109,12 @@ int main(int argc, char *argv[]) {
 
     auto eq1 = EquationFabric::parse("1 + - 9 x (2 - 3 / b)");
     eq1->execute();
+
+    list<Equation*> nodes;
+
+    auto node = nodes.back();
+    Operando* operationPlus = (Operando*) node;
+
     
     return EXIT_SUCCESS;
 }
